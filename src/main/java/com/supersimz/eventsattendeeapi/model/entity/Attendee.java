@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,8 +16,8 @@ import lombok.NoArgsConstructor;
 @Table(name = "tblAttendee")
 public class Attendee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long attendeeId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID attendeeId;
     private String attendeeName;
     @Column(unique = true)
     private String email;
