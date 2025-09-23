@@ -1,11 +1,13 @@
 package com.supersimz.eventsattendeeapi.controller;
 
+import com.supersimz.eventsattendeeapi.model.dto.request.AttendeeRequest;
+import com.supersimz.eventsattendeeapi.model.dto.response.ApiResponse;
+import com.supersimz.eventsattendeeapi.model.dto.response.DeleteResponse;
+import com.supersimz.eventsattendeeapi.model.dto.response.PayloadResponse;
 import com.supersimz.eventsattendeeapi.model.entity.Attendee;
-import com.supersimz.eventsattendeeapi.model.request.AttendeeRequest;
-import com.supersimz.eventsattendeeapi.model.response.ApiResponse;
-import com.supersimz.eventsattendeeapi.model.response.DeleteResponse;
-import com.supersimz.eventsattendeeapi.model.response.PayloadResponse;
 import com.supersimz.eventsattendeeapi.service.AttendeeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -20,9 +22,11 @@ import java.util.UUID;
 @RestController
 @Validated
 @RequestMapping("api/v1/attendees")
+@Tag(name = "Attendee")
 public class AttendeeController {
     private final AttendeeService attendeeService;
 
+    @Operation(summary = "Get all attendees")
     @GetMapping
     public ResponseEntity<ApiResponse<PayloadResponse<Attendee>>> getAllAttendees(
             @RequestParam(defaultValue = "1") Integer page,
@@ -39,6 +43,7 @@ public class AttendeeController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Create a new attendee")
     @PostMapping
     public ResponseEntity<ApiResponse<Attendee>> createAttendee(@RequestBody @Valid AttendeeRequest request) {
         Attendee newAttendee = attendeeService.createAttendee(request);
@@ -50,6 +55,7 @@ public class AttendeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @Operation(summary = "Get attendee by id")
     @GetMapping("/{attendee-id}")
     public ResponseEntity<ApiResponse<Attendee>> getAttendeeById(@PathVariable("attendee-id") UUID id) {
         Attendee attendee = attendeeService.getAttendeeById(id);
@@ -61,6 +67,7 @@ public class AttendeeController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Update attendee by id")
     @PutMapping("/{attendee-id}")
     public ResponseEntity<ApiResponse<Attendee>> updateAttendee(
             @Valid
@@ -75,6 +82,7 @@ public class AttendeeController {
         return ResponseEntity.ok(response);
     }
 
+    @Operation(summary = "Delete attendee by id")
     @DeleteMapping("/{attendee-id}")
     public ResponseEntity<DeleteResponse<Void>> deleteAttendee(@PathVariable("attendee-id") UUID attendeeId) {
         attendeeService.deleteAttendee(attendeeId);

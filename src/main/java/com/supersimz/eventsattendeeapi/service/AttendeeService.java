@@ -1,11 +1,10 @@
 package com.supersimz.eventsattendeeapi.service;
 
 import com.supersimz.eventsattendeeapi.model.entity.Attendee;
-import com.supersimz.eventsattendeeapi.model.request.AttendeeRequest;
-import com.supersimz.eventsattendeeapi.model.response.PayloadResponse;
+import com.supersimz.eventsattendeeapi.model.dto.request.AttendeeRequest;
+import com.supersimz.eventsattendeeapi.model.dto.response.PayloadResponse;
 import org.springframework.data.domain.Sort;
 
-import java.util.List;
 import java.util.UUID;
 
 public interface AttendeeService {

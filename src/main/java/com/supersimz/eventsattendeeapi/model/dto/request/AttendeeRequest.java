@@ -1,4 +1,4 @@
-package com.supersimz.eventsattendeeapi.model.request;
+package com.supersimz.eventsattendeeapi.model.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

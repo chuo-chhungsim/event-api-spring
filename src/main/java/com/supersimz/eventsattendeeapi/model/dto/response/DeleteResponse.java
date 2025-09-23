@@ -1,22 +1,20 @@
-package com.supersimz.eventsattendeeapi.model.response;
+package com.supersimz.eventsattendeeapi.model.dto.response;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
+
 import java.time.Instant;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class ApiResponse<T> {
+public class DeleteResponse<T>{
     private String message;
     private HttpStatus status;
     @Builder.Default
     private Instant requestedTime = Instant.now();
-    private T payload;
 }

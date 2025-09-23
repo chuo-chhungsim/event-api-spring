@@ -1,4 +1,4 @@
-package com.supersimz.eventsattendeeapi.model.response;
+package com.supersimz.eventsattendeeapi.model.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

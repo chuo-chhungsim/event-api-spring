@@ -1,16 +1,16 @@
 package com.supersimz.eventsattendeeapi.exception;
 
+import lombok.Getter;
+
 import java.util.UUID;
 
+@Getter
 public class UserNotFoundException extends RuntimeException {
     private final UUID id;
 
     public UserNotFoundException(UUID id) {
-        super("Entity with id " + id + " not found");
+        super("User with id " + id + " not found");
         this.id = id;
     }
 
-    public UUID getId() {
-        return id;
-    }
 }
